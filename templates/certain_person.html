@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit:no">
+<title>口罩人臉辨識系統</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style type="text/css">
+            .slogan{
+                color:black;
+                font-family: 'Noto Sans TC', sans-serif;
+                //text-align:center;
+                font-size:65px;
+            }
+            h1,h2,h3,h4,h5,h6{
+              font-family: 'Noto Sans TC', sans-serif;
+            }
+
+
+
+            a{
+              font-family: 'Noto Sans TC', sans-serif;
+            }
+            .btn{
+              background-color: #F05F5C;
+              color: white;
+              padding: 10px 20px;
+              border-radius: 20px;
+            }
+            #intro .container{
+              position: relative;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+            nav a img{
+              width:189px;
+            }
+            .container{
+              max-width: 1450px;
+            }
+            section ul li{
+              margin: 0px 40px;
+              font-size: 20px;
+            }
+            #second h2{
+              font-size: 45px;
+              padding: 10px;
+              margin-top:45px;
+            }
+            #second h1{
+              position:absolute;
+              bottom: 40%;
+            }
+
+
+            #second .uploaded_picture{
+              background-image: url("{{ url_for('static',filename='images/upload_icon.jpeg')}}");
+              width: 675px;
+              height: 600px;
+              background-position: center;
+              background-size: cover;
+              border-style: solid;
+
+            }
+            #second .predicted_picture{
+              width: 675px;
+              height: 600px;
+              background-position: center;
+              background-size: cover;
+              border-style: solid;
+
+            }
+            #second img{
+              font-family: 'Helvetica';
+              font-weight: 30;
+              line-height: 1.4em;
+              text-align: center;
+              width: 100%;
+              height:auto;
+              display: block;
+              position: relative;
+
+
+
+
+              &:after {
+                content: "(url: " attr(src) ")";
+                display: block;
+                font-size: 19px;
+            }
+
+            }
+
+            img:after {  
+                        content: "\f1c5" " " attr(alt);
+
+                        font-size: 18px;
+                        font-family: FontAwesome;
+                        color: rgba(255,255,255);
+
+                        display: block;
+                        position: absolute;
+                        z-index: 2;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(255,255,255)
+                      }
+        </style>
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">   
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/400e99f5c4.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+  <section id="first">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="https://ece.ntust.edu.tw/" target="_blank" >
+              <img src="{{ url_for('static',filename='images/logo.jpeg')}}">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">主頁</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/mask">口罩配戴辨識</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/certain_person">特定人物辨識</a>
+                </li>
+  
+                <li class="nav-item">
+                  <a class="nav-link" href="/facecapture">臉部擷取</a>
+                </li>
+  
+                <li class="nav-item">
+                  <a class="nav-link" href="/#third">製作學生</a>
+                </li>
+  
+                <li class="nav-item">
+                  <a class="nav-link" href="https://homepage.ntust.edu.tw/wmchen/" target="_blank">指導教授</a>
+                </li>
+  
+              </ul>
+  
+  
+            </div>
+          </div>
+        </nav>
+    </div>
+  </section> 
+
+  <section id="second">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center" >
+                <h2>特定人物辨識</h2>
+                <p>
+                  <h3>辨識照片中是否含有特定人物(川普、金正恩)</h3>
+                </p>
+            </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <center>
+              <div class="uploaded_picture">
+                    <img src="{{ test_image }}" alt="Test Image" width="100%" height="100%" >
+              </div>
+            </center>
+          </div>
+          <div class="col-md-6 text-center">
+            <center>
+            <div class="predicted_picture">
+              <center><h2 style="position: absolute; bottom: 46%; left:16%">{{res}}</h2></center>
+            </div>
+          </center>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 text-center">
+
+            <form method=post enctype=multipart/form-data>
+                    <label class="btn">
+                    <input id="upload_img" style="display:none;" type="file" name="file">
+                    <i class="fa fa-photo"></i> 選擇圖片
+                    </label>
+
+                    <label class="btn">
+                      <input type=submit value=Upload style="display: none;">
+                      <i class="fas fa-upload"></i>上傳圖片
+                    </label>
+                    
+            </form>
+
+          </div>
+        </div>
+    </div>
+  </section>
+</body>
+
+
+
+
+
+
+
+  

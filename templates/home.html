@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit:no">
+<title>口罩人臉辨識系統</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style type="text/css">
+            .slogan{
+                color:black;
+                font-family: 'Noto Sans TC', sans-serif;
+                //text-align:center;
+                font-size:65px;
+            }
+            h1,h2,h3,h4,h5,h6{
+              font-family: 'Noto Sans TC', sans-serif;
+            }
+
+            .startbutton{
+                width:150px;
+                height:90px;
+                font-size:30px;
+            }
+            #intro .jumbotron{
+              height:70vh;
+              margin-bottom: 0px;
+              background-image: url(static/images/jumbotron_bg.jpg);
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+            a{
+              font-family: 'Noto Sans TC', sans-serif;
+            }
+            .btn{
+              background-color: #F05F5C;
+              color: white;
+              padding: 10px 20px;
+              border-radius: 20px;
+            }
+            #intro .container{
+              position: relative;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+            nav a img{
+              width:189px;
+            }
+            .container{
+              max-width: 1450px;
+            }
+            section ul li{
+              margin: 0px 40px;
+              font-size: 20px;
+            }
+            #second h2{
+              font-size: 45px;
+              padding: 45px;
+            }
+            #second h1{
+              position:absolute;
+              bottom: 40%;
+            }
+            #third h2{
+              font-size: 45px;
+              padding: 50px;
+            }
+            #third{
+              background: rgb(248,248,248);
+              padding: 10px;
+            }
+            #third img{
+              width:695px;
+              
+            }
+
+            .carousel .carousel-item img {
+              height: 305px;
+            }
+        </style>
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">   
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/400e99f5c4.js" crossorigin="anonymous"></script>
+
+
+        <!--讓圖片以幻燈片顯示-->
+
+
+
+
+
+</head>
+
+<body>
+  <section class="first">
+      <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://ece.ntust.edu.tw/" target="_blank" >
+            <img src="{{ url_for('static',filename='images/logo.jpeg')}}">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">主頁</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mask">口罩配戴辨識</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/certain_person">特定人物辨識</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/facecapture">臉部擷取</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/#third">製作學生</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="https://homepage.ntust.edu.tw/wmchen/" target="_blank">指導教授</a>
+              </li>
+
+            </ul>
+
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section> 
+
+          <section id="intro"> 
+            <div class="jumbotron">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="slogan">口罩人臉辨識系統 v0.1</div>
+                        <a class="btn" href="/mask">立即使用</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </section>
+
+  <section id="second">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8 offset-md-2 text-center" >
+                  <h2>能夠做到什麼?</h2>
+                  <div class="row">
+                      <div class="col-md-4 text-center">
+                          <p>
+                            <h1>辨識傳入的照片是否帶有口罩</h1>
+                            </p>
+                            
+                      </div>
+                      <div class="col-md-8 text-right">
+
+                        <div class="container">
+                          <div class="carousel slide" data-ride="carousel">
+                             <div class="carousel-inner">
+                               <div class="carousel-item active">
+                                 <img class="d-block w-100 " src="{{ url_for('static',filename='images/function1_1.jpeg')}}" alt="">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100" src="{{ url_for('static',filename='images/function1_2.jpeg')}}" alt="">
+                               </div>
+                             </div>
+                           </div>
+                       </div>
+                        
+                      </div>
+                    
+                  </div>
+
+
+              </div>
+          </div>
+      </div>
+
+      <div class="container">
+          <div class="col-md-8 offset-md-2 text-center">
+            <div class="row">
+                <div class="col-md-8 text-left">
+
+                  <div class="container">
+                    <div class="carousel slide" data-ride="carousel">
+                       <div class="carousel-inner">
+                         <div class="carousel-item active">
+                           <img class="d-block w-100 " src="{{ url_for('static',filename='images/function2_1.jpeg')}}" alt="">
+                         </div>
+                         <div class="carousel-item">
+                           <img class="d-block w-100" src="{{ url_for('static',filename='images/function2_2.jpeg')}}" alt="">
+                         </div>
+                       </div>
+                     </div>
+                 </div>
+
+                </div>
+                <div class="col-md-4 text-center">
+                  <h1>辨識照片中的特定人物</h1>
+                </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section id="third">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>製作者</h2>
+            </div>
+            <div class="col-md-6 text-left">
+              <img src="{{ url_for('static',filename='images/Won.jpeg')}}">
+              <p>
+                <center><h3>翁廷翰</h3></center>
+                <h4>負責部分:模型製作</h4>
+                <h4><i class="far fa-envelope"></i> Email:b10702007@ntust.edu.tw</h4>
+              </p>
+            </div>
+
+            <div class="col-md-6 text-left">
+              <img src="{{ url_for('static',filename='images/Yao.jpg')}}">
+              <p>
+                <center><h3>姚勝文</h3></center>
+                <h4>負責部分:網頁架設與資料集抓取</h4>
+                <h4><i class="far fa-envelope"></i> Email:b10702003@ntust.edu.tw</h4>
+              </p>
+                
+            </div>
+      </div>
+  </section>
+
+
+</body>
+</html> 
