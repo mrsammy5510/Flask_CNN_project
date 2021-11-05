@@ -1,2 +1,2 @@
 # Flask_CNN_project
- 
+利用FLASK將CNN模型架設到網站上
